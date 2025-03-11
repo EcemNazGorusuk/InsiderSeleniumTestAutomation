@@ -1,5 +1,5 @@
 package Base;
-import Pages.MainPage;
+import PageObjects.MainPage;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -12,11 +12,11 @@ public class BaseTest  extends BaseLibrary{
         driver=new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://useinsider.com/");
-        mainPage.acceptAllCookiesButton();
+        mainPage.acceptAllCookies();
     }
 
     @AfterMethod
     public void tearDown(){
-        driver.quit();
+      //  driver.quit();
     }
 }

@@ -1,4 +1,4 @@
-package Pages;
+package PageObjects;
 
 import Base.BaseLibrary;
 import io.qameta.allure.Step;
@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 public class MainPage extends BaseLibrary {
 
     @Step("Cookie Notification Acceptance Control")
-    public MainPage acceptAllCookiesButton() throws InterruptedException {
+    public MainPage acceptAllCookies() throws InterruptedException {
         sleepThread(4000);
         WebElement element=driver.findElement(By.cssSelector("#wt-cli-accept-all-btn"));
         if(element.isDisplayed())
