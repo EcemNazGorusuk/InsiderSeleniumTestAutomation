@@ -1,7 +1,5 @@
 package Base;
-
 import org.openqa.selenium.WebDriver;
-
 import java.util.ArrayList;
 
 public class BaseLibrary extends Data{
