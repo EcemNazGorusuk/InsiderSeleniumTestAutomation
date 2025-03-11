@@ -6,6 +6,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class CareersPage extends BaseLibrary {
 
@@ -45,7 +49,6 @@ public class CareersPage extends BaseLibrary {
 
     @Step("Check if 'Our Locations' slider is displayed properly")
     public CareersPage checkOurLocationsSlider() {
-        //.col-12.mt-3.mt-md-5.pt-md-5
         WebElement ourLocationSection = driver.findElement(By.cssSelector("div[class='col-12 d-flex flex-wrap']"));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", ourLocationSection);
@@ -58,7 +61,37 @@ public class CareersPage extends BaseLibrary {
         }
         Actions actions = new Actions(driver);
         actions.moveToElement(element).perform();
-
         return this;
     }
+
+    @Step("Check if 'See All Teams' button works correctly")
+    public CareersPage checkSeeAllTeamsButton() {
+        WebElement element = driver.findElement(By.xpath("//a[contains(text(),'See all teams')]"));
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).click().perform();
+        return this;
+    }
+
+    @Step("Check if 'Life at Insider' Section is displayed properly")
+    public CareersPage checkLifeAtInsiderSection() {
+        WebElement sectionElement = driver.findElement(By.cssSelector("[data-id='a8e7b90']"));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", sectionElement);
+
+        WebElement element = driver.findElement(By.xpath("//h2[normalize-space()='Life at Insider']"));
+        if(element.isDisplayed()){
+            String getTitleText = element.getText();
+            Assert.assertEquals("Life at Insider", getTitleText);
+            System.out.println(getTitleText);
+        }
+        return this;
+    }
+
 }

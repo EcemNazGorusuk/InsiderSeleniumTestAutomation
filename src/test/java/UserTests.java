@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class UserTests extends BaseTest {
     HomePage homePage=new HomePage();
 
-    @Test(description = "TC01 - Homepage redirection control")
+    @Test(description = "TC01 - 'Home Page' redirection control")
     public void verifyHomePageIsOpen() throws InterruptedException {
         homePage.checkHomePageUrl("https://useinsider.com/")
                 .checkHomePageTitle()
