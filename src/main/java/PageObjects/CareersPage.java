@@ -42,4 +42,23 @@ public class CareersPage extends BaseLibrary {
         }
         return this;
     }
+
+    @Step("Check if 'Our Locations' slider is displayed properly")
+    public CareersPage checkOurLocationsSlider() {
+        //.col-12.mt-3.mt-md-5.pt-md-5
+        WebElement ourLocationSection = driver.findElement(By.cssSelector("div[class='col-12 d-flex flex-wrap']"));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", ourLocationSection);
+
+        WebElement element = driver.findElement(By.cssSelector(".glide__slide.glide__slide--active"));
+        if(element.isDisplayed()){
+            String getFirstText=element.getText();
+            Assert.assertEquals("New York\nUS", getFirstText);
+            System.out.println(getFirstText);
+        }
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).perform();
+
+        return this;
+    }
 }

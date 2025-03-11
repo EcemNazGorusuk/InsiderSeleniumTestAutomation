@@ -16,6 +16,7 @@ public class CareerTests extends BaseTest {
         waitForElementToBeVisible(By.cssSelector("section[id='page-head'] div[class='container']"));
         careersPage.checkCareersPageTitle()
                    .checkCareersPageUrl("https://useinsider.com/careers/")
-                   .checkOurLocationsSection();
+                   .checkOurLocationsSection()
+                   .checkOurLocationsSlider();
     }
 }
