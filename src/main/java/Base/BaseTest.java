@@ -11,7 +11,7 @@ public class BaseTest  extends BaseLibrary{
     public void setUp() throws InterruptedException {
         driver=new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://useinsider.com/");
+        driver.get(insiderUrl);
         mainPage.acceptAllCookies();
     }
 

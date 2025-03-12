@@ -13,20 +13,13 @@ public class HomePage extends BaseLibrary {
 
     @Step("Check Home Page Title")
     public HomePage checkHomePageTitle() {
-        String pageTitle = driver.getTitle();
-        System.out.println(pageTitle);
-        Assert.assertEquals(pageTitle,homePageTitle );
+       checkPageTitle(homePageTitle);
         return this;
     }
 
     @Step("Check Home Page Url")
-    public HomePage checkHomePageUrl(String expectedUrl) {
-        String currentUrl = driver.getCurrentUrl();
-        System.out.println("Current Url: "+currentUrl);
-        Assert.assertEquals(expectedUrl, currentUrl);
-        if (!currentUrl.equals(expectedUrl)) {
-            Assert.fail(wrongUrlMsg + currentUrl);
-        }
+    public HomePage checkHomePageUrl() {
+       checkPageUrl(insiderUrl);
         return this;
     }
 

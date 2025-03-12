@@ -15,7 +15,7 @@ public class CareerTests extends BaseTest {
         homePage.clickCompanyDropdownBtn();
         waitForElementToBeVisible(By.cssSelector("section[id='page-head'] div[class='container']"));
         careersPage.checkCareersPageTitle()
-                   .checkCareersPageUrl("https://useinsider.com/careers/");
+                   .checkCareersPageUrl();
     }
 
     @Test(description ="TC02 - Check if 'Careers Page' and its 'Our Locations' are presented correctly")
@@ -38,5 +38,13 @@ public class CareerTests extends BaseTest {
         homePage.clickCompanyDropdownBtn();
         waitForElementToBeVisible(By.cssSelector("section[id='page-head'] div[class='container']"));
         careersPage.checkLifeAtInsiderSection();
+    }
+
+    @Test(description = "TC05 - Navigate to QA Careers Page and redirection control")
+    public void verifyQAPageRedirection() throws InterruptedException {
+       careersPage.navigateToQAPage()
+                  .checkQAPageTitle()
+                  .checkQAPageUrl()
+                  .clickSeeAllQAJobsButton();
     }
 }

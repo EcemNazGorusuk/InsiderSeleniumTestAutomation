@@ -9,7 +9,7 @@ public class UserTests extends BaseTest {
 
     @Test(description = "TC01 - 'Home Page' redirection control")
     public void verifyHomePageIsOpen() throws InterruptedException {
-        homePage.checkHomePageUrl("https://useinsider.com/")
+        homePage.checkHomePageUrl()
                 .checkHomePageTitle()
                 .checkInsiderIconButton();
     }

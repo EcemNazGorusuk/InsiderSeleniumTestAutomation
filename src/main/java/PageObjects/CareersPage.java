@@ -15,20 +15,13 @@ public class CareersPage extends BaseLibrary {
 
     @Step("Check Careers Page Title")
     public CareersPage checkCareersPageTitle() {
-        String pageTitle = driver.getTitle();
-        System.out.println(pageTitle);
-        Assert.assertEquals(pageTitle,careersPageTitle );
+        checkPageTitle(careersPageTitle);
         return this;
     }
 
     @Step("Check Careers Page Url")
-    public CareersPage checkCareersPageUrl(String expectedUrl) {
-        String currentUrl = driver.getCurrentUrl();
-        System.out.println("Current Url: "+currentUrl);
-        Assert.assertEquals(expectedUrl, currentUrl);
-        if (!currentUrl.equals(expectedUrl)) {
-            Assert.fail(wrongUrlMsg + currentUrl);
-        }
+    public CareersPage checkCareersPageUrl() {
+        checkPageUrl(insiderUrl+"careers/");
         return this;
     }
 
@@ -64,6 +57,21 @@ public class CareersPage extends BaseLibrary {
         return this;
     }
 
+    @Step("Check if 'Life at Insider' Section is displayed properly")
+    public CareersPage checkLifeAtInsiderSection() {
+        WebElement sectionElement = driver.findElement(By.cssSelector("[data-id='a8e7b90']"));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", sectionElement);
+
+        WebElement element = driver.findElement(By.xpath("//h2[normalize-space()='Life at Insider']"));
+        if(element.isDisplayed()){
+            String getTitleText = element.getText();
+            Assert.assertEquals("Life at Insider", getTitleText);
+            System.out.println(getTitleText);
+        }
+        return this;
+    }
+
     @Step("Check if 'See All Teams' button works correctly")
     public CareersPage checkSeeAllTeamsButton() {
         WebElement element = driver.findElement(By.xpath("//a[contains(text(),'See all teams')]"));
@@ -79,19 +87,31 @@ public class CareersPage extends BaseLibrary {
         return this;
     }
 
-    @Step("Check if 'Life at Insider' Section is displayed properly")
-    public CareersPage checkLifeAtInsiderSection() {
-        WebElement sectionElement = driver.findElement(By.cssSelector("[data-id='a8e7b90']"));
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView(true);", sectionElement);
-
-        WebElement element = driver.findElement(By.xpath("//h2[normalize-space()='Life at Insider']"));
-        if(element.isDisplayed()){
-            String getTitleText = element.getText();
-            Assert.assertEquals("Life at Insider", getTitleText);
-            System.out.println(getTitleText);
-        }
+    @Step("Navigate to 'https://useinsider.com/careers/quality-assurance/'")
+    public CareersPage navigateToQAPage(){
+        String qaPageUrl = insiderUrl+"careers/quality-assurance/";
+        driver.navigate().to(qaPageUrl);
         return this;
     }
+
+    @Step("Check QA Page Title")
+    public CareersPage checkQAPageTitle() {
+        checkPageTitle(qaPageTitle);
+        return this;
+    }
+
+    @Step("Check QA Page Url")
+    public CareersPage checkQAPageUrl() {
+        checkPageUrl(insiderUrl+"careers/quality-assurance/");
+        return this;
+    }
+
+    @Step("Click 'See All QA Jobs' button")
+    public CareersPage clickSeeAllQAJobsButton() {
+        WebElement seeAllQAJobsButton = driver.findElement(By.xpath("//a[normalize-space()='See all QA jobs']"));
+        seeAllQAJobsButton.click();
+        return this;
+   
+   }
 
 }
