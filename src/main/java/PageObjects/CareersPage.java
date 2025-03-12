@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 
 public class CareersPage extends BaseLibrary {
@@ -107,11 +106,11 @@ public class CareersPage extends BaseLibrary {
     }
 
     @Step("Click 'See All QA Jobs' button")
-    public CareersPage clickSeeAllQAJobsButton() {
+    public CareersPage clickSeeAllQAJobsButton() throws InterruptedException {
         WebElement seeAllQAJobsButton = driver.findElement(By.xpath("//a[normalize-space()='See all QA jobs']"));
         seeAllQAJobsButton.click();
+
         return this;
-   
    }
 
 }

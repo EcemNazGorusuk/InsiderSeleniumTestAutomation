@@ -14,6 +14,12 @@ public class JobTests extends BaseTest {
                    .checkQAPageTitle()
                    .checkQAPageUrl()
                    .clickSeeAllQAJobsButton();
-                //link url doğru mu kontrol et
+        jobsPage.checkJobsPageTitle()
+                .checkJobsPageUrl()
+                .filterByLocation();
+                //select filtre steplerini oluştur
+                //filtrelenmiş öğenin varlığını kontrol et
+
+
     }
 }

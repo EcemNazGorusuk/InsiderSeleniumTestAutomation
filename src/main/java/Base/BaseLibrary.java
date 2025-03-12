@@ -1,5 +1,4 @@
 package Base;
-import PageObjects.CareersPage;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import java.util.ArrayList;
@@ -30,7 +29,6 @@ public class BaseLibrary extends Data{
         if (!currentUrl.equals(expectedUrl)) {
             Assert.fail(wrongUrlMsg + currentUrl);
         }
-
     }
     public void switchTab(){
         ArrayList<String> tabs=new ArrayList<>(driver.getWindowHandles());

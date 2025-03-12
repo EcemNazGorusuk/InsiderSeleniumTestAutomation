@@ -14,7 +14,6 @@ public class BaseTest  extends BaseLibrary{
         driver.get(insiderUrl);
         mainPage.acceptAllCookies();
     }
-
     @AfterMethod
     public void tearDown(){
       //  driver.quit();
