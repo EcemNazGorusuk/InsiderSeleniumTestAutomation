@@ -8,7 +8,7 @@ public class JobTests extends BaseTest {
     CareersPage careersPage=new CareersPage();
     JobsPage jobsPage=new JobsPage();
 
-    @Test(description = "TC01 - Filter jobs by location and verify their existence")
+    @Test(description = "TC01 - Filter jobs by location & department and verify their existence")
     public void filterJobsByLocation() throws InterruptedException {
         careersPage.navigateToQAPage()
                    .checkQAPageTitle()
@@ -16,9 +16,10 @@ public class JobTests extends BaseTest {
                    .clickSeeAllQAJobsButton();
         jobsPage.checkJobsPageTitle()
                 .checkJobsPageUrl()
-                .filterByLocation();
-                //select filtre steplerini oluştur
-                //filtrelenmiş öğenin varlığını kontrol et
+                .filterByLocationAndDepartment()
+                .checkPresenceOfFilters();
+
+
 
 
     }
