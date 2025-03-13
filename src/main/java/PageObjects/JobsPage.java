@@ -61,6 +61,7 @@ public class JobsPage extends BaseLibrary {
                     results.add("Expected : " + expectedPosition + " Actual : " + position.getText());
                 }
             }
+            
             for (WebElement location : allLocations) {
                 //Assert.assertEquals(expectedLocation,location.getText());
                 if (!location.getText().equals(expectedLocation))
