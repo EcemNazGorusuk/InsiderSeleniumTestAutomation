@@ -40,10 +40,7 @@
 
 
 <h3 id="results">Results</h3>
-<p>Using Allure Report, test results are clearly visualized, offering detailed reports that encompass test successes, failures, execution times, and various other critical metrics.</p>
-
-<h3 id="contributors">Contributors</h3>
-<p> <a href="https://github.com/EcemNazGorusuk">Ecem Naz Görüşük</a> - Project Developer and Main Contributor</p>
+<p>With Allure Report, test results are visually presented, providing comprehensive reports that include test successes, failures, execution times, and other key metrics.</p>
 
 <h3 id="screenshots">Screenshots</h3>
 <ul>
