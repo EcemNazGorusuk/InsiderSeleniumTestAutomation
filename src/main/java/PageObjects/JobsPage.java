@@ -55,34 +55,14 @@ public class JobsPage extends BaseLibrary {
          allLocations = driver.findElements(By.cssSelector(".position-list-item-wrapper .position-location"));
          allDepartments = driver.findElements(By.cssSelector(".position-list-item-wrapper .position-department"));
          ArrayList<String> results = new ArrayList<String>();
-            for (WebElement position : allPositions) {
-                //Assert.assertTrue(position.getText().contains(expectedPosition)));
-                if (!position.getText().contains(expectedPosition))
-                {
-                    results.add("Expected : " + expectedPosition + " Actual : " + position.getText());
-                }
-            }
+         verifyFilterResults(allPositions, expectedPosition, "Position", results);
+         verifyFilterResults(allLocations, expectedLocation, "Location", results);
+         verifyFilterResults(allDepartments, expectedDepartment, "Department", results);
 
-            for (WebElement location : allLocations) {
-                //Assert.assertEquals(expectedLocation,location.getText());
-                if (!location.getText().equals(expectedLocation))
-                {
-                    results.add("Expected : " + expectedLocation + " Actual : " + location.getText());
-                }
-            }
-            for (WebElement department : allDepartments) {
-                //Assert.assertEquals(expectedDepartment, department.getText());
-                if (!department.getText().equals(expectedDepartment))
-                {
-                    results.add("Expected : " + expectedDepartment + " Actual : " + department.getText());
-                }
-            }
-            if (!results.isEmpty()) {
-              System.out.println("ERRORS...!");
-              for (String result : results) {
-                 System.out.println(result);
-              }
-            }
+        if (!results.isEmpty()) {
+            System.out.println("ERRORS...!");
+            results.forEach(System.out::println);
+        }
            return this;
     }
 

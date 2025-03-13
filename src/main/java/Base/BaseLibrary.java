@@ -36,4 +36,11 @@ public class BaseLibrary extends Data{
         ArrayList<String> tabs=new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(1));
     }
+    public void verifyFilterResults(List<WebElement> elements, String expectedValue, String filterType, List<String> results) {
+        for (WebElement element : elements) {
+            if (!element.getText().equals(expectedValue)) {
+                results.add("Expected " + filterType + ": " + expectedValue + " | Actual: " + element.getText());
+            }
+        }
+    }
 }
