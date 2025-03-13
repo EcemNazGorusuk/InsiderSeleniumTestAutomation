@@ -13,6 +13,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class JobsPage extends BaseLibrary {
+    public static List<WebElement> allPositions;
+    public static List<WebElement> allLocations;
+    public static List<WebElement> allDepartments;
+
     @Step("Check Jobs Page Title")
     public JobsPage checkJobsPageTitle() {
         checkPageTitle(jobsPageTitle);
@@ -47,13 +51,10 @@ public class JobsPage extends BaseLibrary {
     @Step("Check the presence of filtered Locations & Department")
     public JobsPage checkPresenceOfFilters() throws InterruptedException {
         Thread.sleep(5000);
-        List<WebElement> allPositions = driver.findElements(By.cssSelector(".position-list-item-wrapper .position-title"));
-        List<WebElement> allLocations = driver.findElements(By.cssSelector(".position-list-item-wrapper .position-location"));
-        List<WebElement> allDepartments = driver.findElements(By.cssSelector(".position-list-item-wrapper .position-department"));
-        String expectedPosition="Quality Assurance";
-        String expectedLocation="Istanbul, Turkiye";
-        String expectedDepartment="Quality Assurance";
-        ArrayList<String> results = new ArrayList<String>();
+         allPositions = driver.findElements(By.cssSelector(".position-list-item-wrapper .position-title"));
+         allLocations = driver.findElements(By.cssSelector(".position-list-item-wrapper .position-location"));
+         allDepartments = driver.findElements(By.cssSelector(".position-list-item-wrapper .position-department"));
+         ArrayList<String> results = new ArrayList<String>();
             for (WebElement position : allPositions) {
                 //Assert.assertTrue(position.getText().contains(expectedPosition)));
                 if (!position.getText().contains(expectedPosition))
@@ -76,18 +77,33 @@ public class JobsPage extends BaseLibrary {
                     results.add("Expected : " + expectedDepartment + " Actual : " + department.getText());
                 }
             }
-        if (!results.isEmpty()) {
-            System.out.println("ERRORS...!");
-            for (String result : results) {
-                System.out.println(result);
+            if (!results.isEmpty()) {
+              System.out.println("ERRORS...!");
+              for (String result : results) {
+                 System.out.println(result);
+              }
             }
-        }
-        return this;
+           return this;
     }
 
 
-    @Step("Check the presence of filtered Locations & Department")
-    public JobsPage example() throws InterruptedException {
+    @Step("Click 'View Role' button")
+    public JobsPage clickViewRoleButton() throws InterruptedException {
+        List<WebElement> buttons = driver.findElements(By.cssSelector(".position-list-item-wrapper"));
+        WebElement getFirstFilteredButton=buttons.get(0);
+        getFirstFilteredButton.click();
+        return this;
+    }
+    @Step("Click 'Apply For This Job' button")
+    public JobsPage clickApplyForThisJobButton() throws InterruptedException {
+        WebElement button = driver.findElement(By.xpath("//a[@data-qa='show-page-apply']"));
+        button.click();
+        return this;
+    }
+
+    @Step("Redirecting to Lever Page control")
+    public JobsPage clickLeverPage() {
+        checkPageUrl("https://jobs.lever.co/useinsider/78ddbec0-16bf-4eab-b5a6-04facb993ddc");
         return this;
     }
 

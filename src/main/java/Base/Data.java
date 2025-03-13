@@ -7,4 +7,7 @@ public class Data {
    public static String careersPageTitle="Ready to disrupt? | Insider Careers";
    public static String qaPageTitle="Insider quality assurance job opportunities";
    public static String jobsPageTitle="Insider Open Positions | Insider";
+   public String expectedPosition="Quality Assurance";
+   public String expectedLocation="Istanbul, Turkiye";
+   public String expectedDepartment="Quality Assurance";
 }

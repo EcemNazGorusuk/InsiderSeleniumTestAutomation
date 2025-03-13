@@ -19,8 +19,6 @@ public class BaseLibrary extends Data{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
-
-
     public void checkPageTitle(String expectedTitle) {
         String pageTitle = driver.getTitle();
         System.out.println(pageTitle);

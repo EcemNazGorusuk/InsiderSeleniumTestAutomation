@@ -47,4 +47,5 @@ public class CareerTests extends BaseTest {
                   .checkQAPageUrl()
                   .clickSeeAllQAJobsButton();
     }
+
 }
